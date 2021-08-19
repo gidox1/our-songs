@@ -1,12 +1,21 @@
 import React, { Fragment, useState } from 'react';
 import styles from './form.module.css'
+import { useForm } from 'react-hook-form';
 
 export default function Form(props) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
 
   if(props.clear && selectedFile) {
     window.location.href = '/'
+  }
+
+  const submitForm = (data) => {
+    console.log(data, "submitForm")
   }
 
   const handleFileChange = (e) => {
@@ -15,8 +24,8 @@ export default function Form(props) {
     }
     const reader = new FileReader();
     reader.addEventListener("load", fileLoadedEvent => {
-      const image = fileLoadedEvent.target.result;
-      setSelectedFile(image)
+      const audio = fileLoadedEvent.target.result;
+      setSelectedFile(audio)
     })
     reader.readAsDataURL(e.target.files[0]);
     setFileName(e.target.files[0].name);
@@ -25,15 +34,30 @@ export default function Form(props) {
   return (
     <Fragment>
       <div className={styles.formContainer}>
-        <form className={styles.mainForm}>
+        <form className={styles.mainForm} onSubmit={handleSubmit(submitForm)}>
           <h3 className={styles.join}>Join us to create a Global playlist!</h3>
           <div className={styles.formInput}>
             <label>Name</label>
-            <input type="text" placeholder="Enter your name" className={styles.textInput}/>
+            <input type="text" placeholder="Enter your name" className={styles.textInput}
+              {...register('name', {
+                required: true,
+              })}
+              required
+            />
             <label>Song Title</label>
-            <input type="text" placeholder="Enter song title" className={styles.textInput}/>
+            <input type="text" placeholder="Enter song title" className={styles.textInput}
+              {...register('title', {
+                required: true,
+              })}
+              required
+            />
             <label>Author</label>
-            <input type="text" placeholder="Enter author name" className={styles.textInput}/>
+            <input type="text" placeholder="Enter author name" className={styles.textInput}
+              {...register('author', {
+                required: true,
+              })}
+              required
+            />
           </div>
           <div>
             <div className={styles.fileSection} >
@@ -55,6 +79,9 @@ export default function Form(props) {
                   </div>
                 )
               }
+            </div>
+            <div style={{margin: 'auto', width: '100%'}} className={styles.btnDv}>
+              <input type="submit" className={styles.submit} value="submit"/>
             </div>
           </div>
         </form>
