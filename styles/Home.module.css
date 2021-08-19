@@ -1,0 +1,64 @@
+.container {
+  height: 800px;
+  background: linear-gradient(#4faaff, #0f68a3);
+  border: 1px solid;
+}
+.nav {
+  margin-top: 1%;
+  margin-left: 1%;
+}
+.uploadBtn{
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  border: 1.5px solid #fff;
+  width: 13%;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: none;
+  cursor: pointer;
+}
+.sec{
+  /* border: 1.5px solid red; */
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.dontShow {
+  height: 500px;
+  width: 20%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.upload {
+  visibility: visible;
+  animation: fadeIn 1s;
+  height: 450px;
+  width: 20%;
+  background: white;
+  margin-top: 2%;
+  border-radius: 5%;
+  margin-left: 1%;
+  border: 1px solid white;
+}
+@keyframes fadeIn {
+  from {
+       opacity: 0;
+  }
+
+  to {
+       opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+       opacity: 1;
+  }
+
+  to {
+       opacity: 0;
+  }
+}

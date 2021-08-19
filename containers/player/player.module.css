@@ -1,0 +1,53 @@
+.container {
+  width: 50%;
+}
+.content {
+  width: 95%;
+  margin: auto;
+  height: 100%;
+}
+.header_{
+  width: 50%;
+  margin: auto;
+}
+.headerText{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+.playSection{
+  height: 200px;
+  width: 100%;
+  margin: auto;
+  margin-top: 10%;
+}
+.media {
+  width: 100%;
+  height: 80px;
+  margin: auto;
+  text-align: center;
+}
+.imageSec {
+    height: 30%;
+}
+.circle, .rotate{
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 40%;
+  margin: auto;
+}
+
+.rotate {
+  animation: rotation 2.5s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
